@@ -26,10 +26,16 @@ function get(url) {
     return request.responseText
 }
 
-function createItems(item) {
-    div = document.createElement("div")
-    div.appendChild(item)
-    return div
+function createTitle(item) {
+    p = document.createElement('p')
+    p.innerHTML = item
+    return p
+}
+
+function createThumb(item) {
+    img = document.createElement('img')
+    img.src = item
+    return img
 }
 
 const data = get("https://blog.apiki.com/wp-json/wp/v2/posts?_embed&categories=518")
@@ -37,6 +43,8 @@ const dataJ = JSON.parse(data)
 console.log(dataJ)
 
 dataJ.forEach(element => {
-    let item = createItems(element)
-    sec.appendChild(item)
+    let title = createTitle(element._embedded["wp:featuredmedia"][0].yoast_head_json.title)
+    sec.appendChild(title)
+    let thumb = createThumb(element._embedded["wp:featuredmedia"][0].source_url)
+    sec.appendChild(thumb)
 })

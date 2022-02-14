@@ -4,7 +4,6 @@
     box-sizing: border-box;
     font-family: 'KoHo', sans-serif;
     scroll-behavior: smooth;
-    /* transition: all 3s ease-in-out; */
 }
 
 body {
@@ -132,4 +131,5 @@ section img#mountains_front {
 
 .sec p {
     font-size: 1.2em;
+    margin: 10px 0;
 }
