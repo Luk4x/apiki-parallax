@@ -27,9 +27,9 @@ function get(url) {
 }
 
 function createTitle(item) {
-    p = document.createElement('p')
-    p.innerHTML = item
-    return p
+    h3 = document.createElement('h3')
+    h3.innerHTML = item
+    return h3
 }
 
 function createThumb(item) {
@@ -43,8 +43,13 @@ const dataJ = JSON.parse(data)
 console.log(dataJ)
 
 dataJ.forEach(element => {
-    let title = createTitle(element._embedded["wp:featuredmedia"][0].yoast_head_json.title)
-    sec.appendChild(title)
+    let div = document.createElement('div')
+
+    let title = createTitle(element._embedded["wp:featuredmedia"][0].title.rendered)
+    div.appendChild(title)
+
     let thumb = createThumb(element._embedded["wp:featuredmedia"][0].source_url)
-    sec.appendChild(thumb)
+    div.appendChild(thumb)
+
+    sec.appendChild(div)
 })

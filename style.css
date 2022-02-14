@@ -129,7 +129,11 @@ section img#mountains_front {
     text-align: center;
 }
 
-.sec p {
+.sec h3 {
     font-size: 1.2em;
-    margin: 10px 0;
+    margin: 30px 0 10px 0;
+}
+
+.sec div img {
+    width: 100%;
 }
