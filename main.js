@@ -38,12 +38,20 @@ function createThumb(item) {
     return img
 }
 
+function createLink(item) {
+    link = document.createElement('a')
+    link.href = item
+    return link
+}
+
 const data = get("https://blog.apiki.com/wp-json/wp/v2/posts?_embed&categories=518")
 const dataJ = JSON.parse(data)
 console.log(dataJ)
 
 dataJ.forEach(element => {
     let div = document.createElement('div')
+    let link = createLink(element.link)
+    link.appendChild(div)
 
     let title = createTitle(element._embedded["wp:featuredmedia"][0].title.rendered)
     div.appendChild(title)
@@ -51,5 +59,5 @@ dataJ.forEach(element => {
     let thumb = createThumb(element._embedded["wp:featuredmedia"][0].source_url)
     div.appendChild(thumb)
 
-    sec.appendChild(div)
+    sec.appendChild(link)
 })
